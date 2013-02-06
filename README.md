@@ -16,3 +16,10 @@ when mouse is clicked, play menu, else play slideshow
 menu: setup wifi, select album
 
 
+image, name, price, discount
+
+weekdays discount
+
+holidays discount
+
+
