@@ -1,47 +1,61 @@
 <!doctype html>
-    <head>
-        <title>Title</title>
+<head>
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    img { display: block; margin: 0 auto; }
+  </style>
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
 
-        <style type="text/css" media="screen">
-            .slides_container {
-                width:570px;
-                height:270px;
-            }
-            .slides_container div {
-                width:570px;
-                height:270px;
-                display:block;
-            }
-        </style>
+<body>
 
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script src="slides.min.jquery.js"></script>
+<div id="container"  style="height:100%">
+<div id="uppannel" style="height:80%">
+<div id="rightpanel" style="width:30%; float: right">
+  hello
+  <br/>
+  sdfadisafoj
+</div>
+<div id="slides" style="height:100%; float:left; width:70%">
 
-        <script>
-            $(function(){
-                $("#slides").slides({
-                effect: 'slide',
-                play: 3000
-                });
-            });
-        </script>
-    </head>
-    <body>
-        <div id="slides">
-            <div class="slides_container">
-                <div>
-                    <img src="http://placehold.it/570x270">
-                </div>
-                <div>
-                    <img src="http://placehold.it/570x270">
-                </div>
-                <div>
-                    <img src="http://placehold.it/570x270">
-                </div>
-                <div>
-                    <img src="http://placehold.it/570x270">
-                </div>
-            </div>
-        </div>
-    </body>
+<div id="myCarousel" class="carousel slide">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <div class="active item"><img src="http://cdn.hdwallpaperspics.com/uploads/2013/01/Beautiful-Sky.jpg"/></div>
+    <div class="item"><img src="http://images5.fanpop.com/image/photos/31700000/Beautiful-gifs-emmashields-31716647-450-313.jpg"/></div>
+    <div class="item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQZ2sd2pslEffmZk2gHo0kOz3-qFtE-wiRH9BSN9FTGdKP9ahBAQ"/></div>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+</div>
+</div>
+
+<div id="lowerpanel" style="height:20%; display:block; clear:both">
+ sdfasdf
+ <br>
+ sdfaldsjfoi
+</div>
+
+</div>
+        
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>        
+<script>
+$(function(){
+  $('img').css("height", "80%");
+  $('.carousel').carousel({
+    interval: 20000
+  })
+});
+</script>
+</body>
                     
