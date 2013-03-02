@@ -23,3 +23,8 @@ weekdays discount
 holidays discount
 
 
+### ads server
+
+Administrator dashboard: http://nitbtest.orbitopenadserver.com/admin
+Advertiser dashboard: http://nitbtest.orbitopenadserver.com/advertiser
+
