@@ -16,11 +16,29 @@ when mouse is clicked, play menu, else play slideshow
 menu: setup wifi, select album
 
 
-image, name, price, discount
+image, title
 
-weekdays discount
+weekdays special
 
-holidays discount
+holidays special
+
+two channels: 1: big, 2: small (the bottom ones)
+
+server logic: given a day, retrieve the set of big items and small items
+
+if its close to holiday, choose holiday, otherwise choose weekday
+
+data structure
+
+1. table: weekday/holiday, 1-7/holidayname, image_url, image_title
+
+2. folder: weekdays and holidays
+
+weekdays/1~7/big/<imagename>.jpg, weekdays/1~7/small/<imagename>.jpg
+
+holidays/<holidayname>/bigorsmall
+
+
 
 
 ### ads server
