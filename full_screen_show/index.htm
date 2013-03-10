@@ -1,0 +1,54 @@
+<!doctype html>
+<head>
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+
+<div id="main">
+
+<video controls id="myVideo" >  
+</video>
+</div>
+ 
+<script>
+var imgs = [
+  "fish.jpg",
+  "sweetandsourpork.jpg",
+  "schezwan-veg-noodles.jpg"
+];
+
+var videos = [
+  'videos/big_buck_bunny_480p.ogv',
+  'videos/Kleiber_winter_large.ogv'
+];
+
+function play_video(url) {
+  document.getElementById("myVideo").setAttribute("src",url);
+  document.getElementById("myVideo").load();
+  document.getElementById("myVideo").play();
+}
+    
+document.getElementById('myVideo').addEventListener('ended',onVideoEnd,false);
+var i = 0;
+function onVideoEnd() {
+  videoPlay(i);
+  i++;
+  if(i == videoCount){ i = 0; }
+}
+
+//videoPlay(0);
+
+</script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>        
+<script>
+$(function(){
+  $('.carousel').carousel({
+    interval: 2000,
+  })
+  $('.carousel').css('margin', '0');
+});
+</script>
+
+</body>

@@ -39,6 +39,15 @@ weekdays/1~7/big/<imagename>.jpg, weekdays/1~7/small/<imagename>.jpg
 holidays/<holidayname>/bigorsmall
 
 
+server:
+
+api get all info, an json object
+
+client:
+
+js get json, choose day data and display
+
+js also sync with server, download json and data
 
 
 ### ads server
