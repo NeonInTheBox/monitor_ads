@@ -1,20 +1,22 @@
 <!doctype html>
 <head>
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<style>
+img, video {margin:0;padding:0}
+</style>
 </head>
 
 <body>
 
 <div id="main">
-<video controls id="myVideo" >  
-</video>
 </div>
  
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 <script>
 var imgs = [
-  "fish.jpg",
-  "sweetandsourpork.jpg",
-  "schezwan-veg-noodles.jpg"
+  "images/fish.jpg",
+  "images/sweetandsourpork.jpg",
+  "images/schezwan-veg-noodles.jpg"
 ];
 
 var videos = [
@@ -32,6 +34,24 @@ function play_video(url) {
 function show_image() {
 }
 
+// gen elements
+// each page should have 100% screen width and height
+var pages = [];
+for (var i = 0; i < imgs.length; i++) {
+  pages.push($('<img src="' + imgs[i] + '"></img>').appendTo($('#main')));
+}
+
+for (var i = 0; i < videos.length; i++) {
+  pages.push($('<video controls id="myVideo" src="' + videos[i] + '"></video>').appendTo('#main'));
+}
+
+var w = $(window).width();
+var h = $(window).height();
+$('#main').css('width', w * (imgs.length + videos.length));
+$('img').css('width', w);
+$('video').css('width', w);
+$('img').css('height', h);
+$('video').css('height', h);
 
 document.getElementById('myVideo').addEventListener('ended',onVideoEnd,false);
 var i = 0;
@@ -43,16 +63,6 @@ function onVideoEnd() {
 
 //videoPlay(0);
 
-</script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>        
-<script>
-$(function(){
-  $('.carousel').carousel({
-    interval: 2000,
-  })
-  $('.carousel').css('margin', '0');
-});
 </script>
 
 </body>
