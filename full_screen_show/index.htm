@@ -2,6 +2,7 @@
 <head>
 <style>
 img, video {margin:0;padding:0}
+#main { position: absolute; top: 0; left: 0; background-color:#000;}
 </style>
 </head>
 
@@ -20,8 +21,8 @@ var imgs = [
 ];
 
 var videos = [
-  'videos/big_buck_bunny_480p.ogv',
-  'videos/Kleiber_winter_large.ogv'
+  'videos/Kleiber_winter_large.ogv',
+  'videos/big_buck_bunny_480p.ogv'
 ];
 
 function play_video(url) {
@@ -42,10 +43,11 @@ for (var i = 0; i < imgs.length; i++) {
 }
 
 for (var i = 0; i < videos.length; i++) {
-  var vpage = $('<video controls id="myVideo" src="' + videos[i] + '"></video>').appendTo('#main');
+  var vpage = $('<video controls class="myVideo" src="' + videos[i] + '"></video>').appendTo('#main');
   pages.push(vpage);
-  vpage.onended = move;  
 }
+
+$('.myVideo').bind('ended', function() { move(); } );
 
 var w = $(window).width();
 var h = $(window).height();
@@ -63,7 +65,6 @@ var move = function() {
     duration: 1000,
     complete: on_move_complete
   });
-  if (cur_ind == pages.length - 1) cur_ind = -1;
 }
 
 function set_timer() {
@@ -71,11 +72,13 @@ function set_timer() {
 }
 
 var on_move_complete = function() {
-  if (cur_ind > 3) { pages[cur_ind].play(); }
+  console.log(cur_ind);
+  if (cur_ind > 2) { pages[cur_ind][0].play(); }
   else {  set_timer(); }
+  if (cur_ind == pages.length - 1) cur_ind = -1;
 }
 
-move();
+set_timer();
 </script>
 
 </body>
