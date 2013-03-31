@@ -11,31 +11,42 @@ img, video {margin:0;padding:0}
 <div id="main">
 </div>
  
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="jquery-1.9.1.min.js"></script>
 
 <script>
-var imgs = [
+// native code is responsible for caching content
+// slide show from a local json list
+
+var items = [
   "images/fish.jpg",
   "images/sweetandsourpork.jpg",
-  "images/schezwan-veg-noodles.jpg"
-];
-
-var videos = [
   'videos/Kleiber_winter_large.ogv',
+  "images/schezwan-veg-noodles.jpg",
   'videos/big_buck_bunny_480p.ogv'
 ];
 
-// gen elements
+// gen element array
 // each page should have 100% screen width and height
-var pages = [];
-for (var i = 0; i < imgs.length; i++) {
-  pages.push($('<img src="' + imgs[i] + '"></img>').appendTo($('#main')));
+function build_pages(items) {
+  var pages = [];
+  for (var i = 0; i < items.length; i++) {
+    var item = items[i];
+    if (is_img(item)) { pages.push($('<img src="' + item + '"></img>').appendTo($('#main'))); }
+    else if (is_video(item)) { 
+      var page = $('<video controls class="myVideo" src="' + item + '"></video>').appendTo('#main');
+      pages.push(page); 
+    } else { content.log('unknown type: ' + item); }
+  }
+  return pages;  
 }
 
-for (var i = 0; i < videos.length; i++) {
-  var vpage = $('<video controls class="myVideo" src="' + videos[i] + '"></video>').appendTo('#main');
-  pages.push(vpage);
-}
+function get_ext(item) { return item.substr(-3); } // need to fix later
+
+function is_img(item) { return get_ext(item) === "jpg"; }
+
+function is_video(item) { return get_ext(item) === "ogv"; }
+
+var pages = build_pages(items);
 
 $('.myVideo').bind('ended', function() { move(); } );
 
@@ -57,13 +68,11 @@ var move = function() {
   });
 }
 
-function set_timer() {
-  setTimeout(move, 2000);
-}
+function set_timer() { setTimeout(move, 2000); }
 
 var on_move_complete = function() {
-  console.log(cur_ind);
-  if (cur_ind > 2) { pages[cur_ind][0].play(); }
+  console.log(cur_ind + ':' + pages[cur_ind][0].nodeName);
+  if (pages[cur_ind][0].nodeName === 'VIDEO') { pages[cur_ind][0].play(); }
   else {  set_timer(); }
   if (cur_ind == pages.length - 1) cur_ind = -1;
 }
