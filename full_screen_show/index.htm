@@ -20,6 +20,7 @@ img, video {margin:0;padding:0}
 var items = [
   "images/fish.jpg",
   "images/sweetandsourpork.jpg",
+  'videos/html5iscool.mp4',
   'videos/Kleiber_winter_large.ogv',
   "images/schezwan-veg-noodles.jpg",
   'videos/big_buck_bunny_480p.ogv'
@@ -44,7 +45,7 @@ function get_ext(item) { return item.substr(-3); } // need to fix later
 
 function is_img(item) { return get_ext(item) === "jpg"; }
 
-function is_video(item) { return get_ext(item) === "ogv"; }
+function is_video(item) { return get_ext(item) === "ogv" || get_ext(item) === "mp4"; }
 
 var pages = build_pages(items);
 
